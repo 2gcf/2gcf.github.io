@@ -9,50 +9,60 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
     <style>
-        *{
+        * {
             margin: 0px;
             padding: 0px;
         }
-        body{
+
+        body {
             text-align: center;
             margin-bottom: 45px !important;
-            font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
-            margin:0;
+            font-family: Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif;
+            margin: 0;
             padding: 0;
             text-decoration: none;
         }
+
         body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
         }
+
         fieldset, img {
-            border:0;
+            border: 0;
         }
-        address, caption, cite, code, dfn,  th, var {
-            font-style:normal;
-            font-weight:normal;
+
+        address, caption, cite, code, dfn, th, var {
+            font-style: normal;
+            font-weight: normal;
         }
+
         ol, ul {
             list-style: none outside none;
-            margin:0;
+            margin: 0;
             padding: 0;
         }
+
         caption, th {
-            text-align:left;
+            text-align: left;
         }
+
         h1, h2, h3, h4, h5, h6 {
 
-            font-weight:normal;
+            font-weight: normal;
         }
+
         a {
-            color:#000000;
+            color: #000000;
             text-decoration: none;
         }
+
         table {
-            border-collapse:collapse;
-            border-spacing:0;
+            border-collapse: collapse;
+            border-spacing: 0;
         }
-        #footer{
+
+        #footer {
 
             width: 100%;
 
@@ -62,7 +72,8 @@
             background: #ccc;
 
         }
-        #bar{
+
+        #bar {
             font-family: Helvetica, Tahoma, Arial, Microsoft YaHei, sans-serif;
             position: fixed;
             bottom: 0px;
@@ -77,7 +88,8 @@
             display: -webkit-box;
             overflow: hidden;
         }
-        .menu{
+
+        .menu {
             -webkit-box-flex: 1;
             background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.1)), color-stop(50%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), color-stop(50%, rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.1)));
             -webkit-background-size: 1px 100%, 1px 100%;
@@ -92,25 +104,144 @@
             color: #4f4d4f;
             font-size: 15px;
         }
-        .menu a,.menu a:visited,.menu a:hover,.menu a:link{
+
+        .menu a, .menu a:visited, .menu a:hover, .menu a:link {
             color: #4f4d4f;
         }
-        .title{
+
+        .title {
             font-size: 20px;
             color: #000;
             /* font-weight: bold; */
             word-break: normal;
             word-wrap: break-word;
         }
+        /*
+        */
+        .block {
+            margin: 10px 0px 0px 0px;
+        }
+
+        .container img {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 960px) {
+            .container {
+                width: 96%;
+                padding:0px;
+                margin:0 auto;
+                -webkit-column-count: 4;
+                -webkit-column-gap: 10px;
+                -webkit-column-rule: 5px;
+            }
+        }
+        @media screen and (max-width: 568px) {
+            .container {
+                width: 96%;
+                padding:0px;
+                margin:0 auto;
+                -webkit-column-count:3;
+                -webkit-column-gap: 10px;
+                -webkit-column-rule: 5px;
+            }
+        }
+        @media screen and (max-width:320px) {
+            .container {
+                width: 96%;
+                padding:0px;
+                margin:0 auto;
+                -webkit-column-count: 2;
+                -webkit-column-gap: 10px;
+                -webkit-column-rule: 5px;
+            }
+        }
+        @media screen and (min-width: 960px) {
+            .container {
+                width: 96%;
+                padding:0px;
+                margin:0 auto;
+                -webkit-column-count:6;
+                -webkit-column-gap: 10px;
+                -webkit-column-rule: 5px;
+            }
+        }
+        @media screen and (min-width: 1000px) {
+            .container {
+                width: 96%;
+                padding:0px;
+                margin:0 auto;
+                -webkit-column-count:7;
+                -webkit-column-gap: 10px;
+                -webkit-column-rule: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>2GCF</h1><h3>来自肯尼亚的时尚品牌</h3>
-    <div><img src="images/0.jpg" width="50%"></div>
+<h1>2GCF</h1>
+
+<h3>来自肯尼亚的时尚品牌</h3>
+
+<div class="container" id="container">
+    <div class="block">
+        <img src="images/0.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/0.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/1.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/2.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/3.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/4.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/3.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/4.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/5.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/6.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/7.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/8.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/9.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/10.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/11.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/12.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/13.jpg">
+    </div>
+    <div class="block">
+        <img src="pics/14.jpg">
+    </div>
+</div>
 
 
-
-    <div style="display: none;"><img src="http://img.users.51.la/17401000.asp" /></div>
-    <div id="footer">1999-2014 www.2gcf.com</div>
+<div style="display: none;"><img src="http://img.users.51.la/17401000.asp"/></div>
+<div id="footer">1999-2014 www.2gcf.com</div>
 </body>
 </html>
