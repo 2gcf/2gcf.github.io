@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #game_pan,#game_over_pan{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ccc;
+            display: none;
+        }
+        #game_box{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .block{
+            position: absolute;
+            border: solid #f00 1px;
+            margin: -1px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="game_pan">
+        <div id="game_box"></div>
+    </div>
+    <div id="game_over_pan">game over</div>
+    <script>
+        var width=document.body.scrollWidth;
+        var height=document.body.scrollHeight;
+        var blocks_x=6;
+        var blocks_y=0;
+        var block_width=width/6;
+        blocks_y=height/block_width;
+        blocks_y+="";
+        blocks_y=blocks_y.split(".")[0];
+        blocks_y=parseInt(blocks_y)+1;
+        var blocks=blocks_x*blocks_y;
+        var all=0;
+        for(i=0;i<blocks_y;i++){
+            for(ii=0;ii<blocks_x;ii++) {
+                all++;
+                var b = document.createElement("div");
+                b.setAttribute("class", "block");
+                b.style.width = block_width + "px";
+                b.style.height = block_width + "px";
+                b.style.lineHeight = block_width + "px";
+                b.style.textAlign="center";
+                b.style.bottom=(i)*block_width+"px";
+                b.style.left=(ii)*block_width+"px";
+                //b.innerHTML=all;
+                b.setAttribute("id","b_"+all);
+                document.querySelector("#game_box").appendChild(b);
+            }
+        }
+        var ats=new Array();
+        for(i=0;i<blocks_x;i++){
+            ats.push(all-i);
+        }
+        var at=0;
+        var num=0;
+        var num_arr=[2,4,8,16,32,64,128,256,512,1024,2048];
+        function gamestart(){
+
+            document.querySelector("#game_pan").style.display="block";
+            document.querySelector("#game_over_pan").style.display="none";
+            next();
+        }
+        function gameover(){
+            document.querySelector("#game_over_pan").style.display="block";
+        }
+        function left(){
+            at-=1;
+            if(at>=1){
+                if(document.querySelector("#b_"+at).innerHTML.length==0){
+                    //no block
+                    parseInt(document.querySelector("#b_"+at).innerHTML)
+                    document.querySelector("#b_"+at).style.background="#f00";
+                    document.querySelector("#b_"+at).innerHTML=num;
+                    //
+                    document.querySelector("#b_"+(at+1)).style.background="none";
+                    document.querySelector("#b_"+(at+1)).innerHTML="";
+
+                }else{
+                    //has block
+                    target=parseInt(document.querySelector("#b_"+at).innerHTML);
+                    if(num==target){
+                        parseInt(document.querySelector("#b_"+at).innerHTML)
+                        document.querySelector("#b_"+at).style.background="#f00";
+
+                        num+=target;
+                        document.querySelector("#b_"+at).innerHTML=num;
+                        //
+                        document.querySelector("#b_"+(at+1)).style.background="none";
+                        document.querySelector("#b_"+(at+1)).innerHTML="";
+
+                    }
+                }
+            }
+        }
+        function right(){
+            at+=1;
+            if(at>=1){
+                if(document.querySelector("#b_"+at).innerHTML.length==0){
+                    //no block
+                    parseInt(document.querySelector("#b_"+at).innerHTML)
+                    document.querySelector("#b_"+at).style.background="#f00";
+                    document.querySelector("#b_"+at).innerHTML=num;
+                    //
+                    document.querySelector("#b_"+(at-1)).style.background="none";
+                    document.querySelector("#b_"+(at-1)).innerHTML="";
+
+                }else{
+                    //has block
+                    target=parseInt(document.querySelector("#b_"+at).innerHTML);
+                    if(num==target){
+                        parseInt(document.querySelector("#b_"+at).innerHTML)
+                        document.querySelector("#b_"+at).style.background="#f00";
+
+                        num+=target;
+                        document.querySelector("#b_"+at).innerHTML=num;
+                        //
+                        document.querySelector("#b_"+(at-1)).style.background="none";
+                        document.querySelector("#b_"+(at-1)).innerHTML="";
+
+                    }
+                }
+            }
+        }
+        function next(){
+            at=ats[Math.floor(Math.random()*6)];
+            num=num_arr[Math.floor(Math.random()*num_arr.length)];
+            document.querySelector("#b_"+at).style.background="#f00";
+            document.querySelector("#b_"+at).innerHTML=num;
+            function down(){
+                at-=blocks_x;
+                if(at>=1){
+                    if(document.querySelector("#b_"+at).innerHTML.length==0){
+                        //no block
+                        parseInt(document.querySelector("#b_"+at).innerHTML)
+                        document.querySelector("#b_"+at).style.background="#f00";
+                        document.querySelector("#b_"+at).innerHTML=num;
+                        //
+                        document.querySelector("#b_"+(at+blocks_x)).style.background="none";
+                        document.querySelector("#b_"+(at+blocks_x)).innerHTML="";
+                        setTimeout(down,1000);
+                    }else{
+                        //has block
+                        target=parseInt(document.querySelector("#b_"+at).innerHTML);
+                        if(num==target){
+                            parseInt(document.querySelector("#b_"+at).innerHTML)
+                            document.querySelector("#b_"+at).style.background="#f00";
+
+                            num+=target;
+                            document.querySelector("#b_"+at).innerHTML=num;
+                            //
+                            document.querySelector("#b_"+(at+blocks_x)).style.background="none";
+                            document.querySelector("#b_"+(at+blocks_x)).innerHTML="";
+                            setTimeout(down,1000);
+                        }else{
+                            if(at>all-blocks_x-blocks_x){
+                                gameover();
+                            }else{
+                                next();
+                            }
+                        }
+                    }
+
+                }else{
+                    next();
+                }
+            }
+            setTimeout(down,1000);
+        }
+        gamestart();
+
+
+
+    </script>
+</body>
+</html>
