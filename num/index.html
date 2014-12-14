@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>以色列8岁少年写的游戏，据说只有2%的人才能赢。</title>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
         *{
@@ -19,6 +19,9 @@
             bottom: 0;
             background: #ccc;
             display: none;
+        }
+        #game_over_pan{
+            background: #000;
         }
         #game_box{
             position: absolute;
@@ -46,7 +49,7 @@
     <div id="game_pan">
         <div id="game_box"></div>
     </div>
-    <div id="game_over_pan">game over</div>
+    <div id="game_over_pan"><img src="gameover.jpg" width="100%"></div>
     <script>
         var width=document.body.scrollWidth;
         var height=document.body.scrollHeight;
@@ -59,6 +62,7 @@
         blocks_y=parseInt(blocks_y)+1;
         var blocks=blocks_x*blocks_y;
         var all=0;
+        var speed=500;
         for(i=0;i<blocks_y;i++){
             for(ii=0;ii<blocks_x;ii++) {
                 all++;
@@ -167,7 +171,7 @@
                         //
                         document.querySelector("#b_"+(at+blocks_x)).style.background="none";
                         document.querySelector("#b_"+(at+blocks_x)).innerHTML="";
-                        setTimeout(down,200);
+                        setTimeout(down,speed);
                     }else{
                         //has block
                         target=parseInt(document.querySelector("#b_"+at).innerHTML);
@@ -180,7 +184,7 @@
                             //
                             document.querySelector("#b_"+(at+blocks_x)).style.background="none";
                             document.querySelector("#b_"+(at+blocks_x)).innerHTML="";
-                            setTimeout(down,1000);
+                            setTimeout(down,speed);
                         }else{
                             if(at>all-blocks_x-blocks_x){
                                 gameover();
@@ -194,7 +198,7 @@
                     next();
                 }
             }
-            setTimeout(down,200);
+            setTimeout(down,speed);
         }
         window.addEventListener('touchstart', function (e) {
             var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
@@ -227,5 +231,6 @@
 
 
     </script>
+    <div style="display: none;"><img src="http://img.users.51.la/17401000.asp"/></div>
 </body>
 </html>
