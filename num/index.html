@@ -160,7 +160,7 @@
                         //
                         document.querySelector("#b_"+(at+blocks_x)).style.background="none";
                         document.querySelector("#b_"+(at+blocks_x)).innerHTML="";
-                        setTimeout(down,1000);
+                        setTimeout(down,200);
                     }else{
                         //has block
                         target=parseInt(document.querySelector("#b_"+at).innerHTML);
@@ -187,7 +187,7 @@
                     next();
                 }
             }
-            setTimeout(down,1000);
+            setTimeout(down,200);
         }
         gamestart();
 
